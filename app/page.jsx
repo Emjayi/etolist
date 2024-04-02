@@ -37,7 +37,7 @@ export default function Home() {
   const handleDeleteTodo = async (id) => {
     try {
       await axios.delete(`/api/todos/${id}`);
-      setTodos(todos.filter((todo) => todo.id !== id));
+      setTodos(todos.filter((todo) => todo.id == id));
     } catch (error) {
       console.error('Error deleting todo:', error);
     }
@@ -70,7 +70,6 @@ export default function Home() {
               <ModalHeader className="flex flex-col gap-1">Add todo</ModalHeader>
               <ModalBody>
                 <Input
-                  isClearable
                   type="text"
                   value={todoText}
                   onChange={(e) => setTodoText(e.target.value)}
